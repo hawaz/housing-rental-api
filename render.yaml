@@ -3,7 +3,7 @@ services:
     name: housing-rental-api
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: "gunicorn run:app"
+    startCommand: "gunicorn run:run"
     envVars:
       - key: FLASK_ENV
         value: production
