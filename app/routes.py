@@ -60,14 +60,18 @@ def get_listings():
 def get_listings_by_user(user_id):
     listings = Listing.query.filter_by(posted_by=user_id).all()
     return jsonify([{
-        "id": l.id,
-        "title": l.title,
-        "price": l.price,
-        "region": l.region,
-        "city": l.city,
-        "bedrooms": l.bedrooms,
-        "status": l.status
-    } for l in listings])
+        "id": listing.id,
+        "title": listing.title,
+        "price": listing.price,
+        "region": listing.region,
+        "city": listing.city,
+        "bedrooms": listing.bedrooms,
+        "description": listing.description,
+        "image_urls": listing.image_urls,
+        "contact": listing.contact,
+        "status": listing.status,
+        "created_at": listing.created_at
+    } for listing in listings])
 
 
 #-----------------------------------------------------------------------
@@ -113,6 +117,7 @@ def search_listings():
 
         listings = query.all()
 
+       
         results = [{
             "title": l.title,
             "description":l.description,
